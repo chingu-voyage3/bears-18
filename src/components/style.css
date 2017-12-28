@@ -1,0 +1,58 @@
+body{
+    
+    font-family: 'Roboto', monospace;
+       
+}
+h1{
+    font-family: 'Montserrat', sans-serif;
+}
+.top{
+    font-family: 'Montserrat', sans-serif;
+}
+.shared{
+    color:green;
+}
+.navbar{
+    margin-bottom: 0px;
+}
+.uppsection{
+
+background-color: gold;
+    text-align: left;
+max-height: 400px;
+min-height: 300px;
+height: 66vh;
+}
+.dev{
+    max-width: 1200px;
+    margin-bottom: 50px !important ;
+
+}
+.dev-edit-remove-button{
+     margin-bottom: 0px !important ;
+}
+.add-dev-button {
+    display: inline-block;
+    padding: 8px 16px;
+    text-decoration: none;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .add-form-container{
+      margin-bottom: 30px;
+     
+  }
+  .dev-photo{
+    height:100px;
+    width: 100px;
+  }
+  .isactive{
+      color: blanchedalmond !important;
+  }
+  .edit-form-container{
+    margin-bottom: 30px;
+    
+  }
+  .cancel-update{
+      margin-top: 20px;
+  }
