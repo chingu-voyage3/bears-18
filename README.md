@@ -1,6 +1,7 @@
 
 # tiqa
  a project for freelance management using React Redux  and nodejs
+https://travis-ci.org/chingu-voyage3/bears-18.svg?branch=master 
 
 # Introduction
 TIQA provides a platform to new developers, those recently graduated or wish to experience remote work in a friendly environment, where they provide their services for free until a certain amount of projects have been met. Afterwards, they can inform new clients of a hourly, monthly or project based income. 
