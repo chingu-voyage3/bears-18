@@ -1,10 +1,7 @@
 
 # tiqa
  a project for freelance management using React Redux  and nodejs
-=======
-# bears-18
-=======
-# bears-18
+
 # Introduction
 TIQA provides a platform to new developers, those recently graduated or wish to experience remote work in a friendly environment, where they provide their services for free until a certain amount of projects have been met. Afterwards, they can inform new clients of a hourly, monthly or project based income. 
 
@@ -16,4 +13,6 @@ Name: TIQA = trust in arabic
 Slogan: Building Confidence
 
 ## getting started:
-  $ npm install
+Clone the repo then 
+```$ npm install ``` and  ```$ npm start```
+Start doing your magic!!
