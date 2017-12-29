@@ -14,5 +14,7 @@ Slogan: Building Confidence
 
 ## getting started:
 Clone the repo then 
-```$ npm install ``` and  ```$ npm start```
+```$ npm install ``` and  ```$ npm start``` 
 Start doing your magic!!
+you should have a mongodb instance locally otherwise you could change
+the setting in src/server/config.js
