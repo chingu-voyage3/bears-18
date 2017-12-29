@@ -15,3 +15,5 @@ This builds confidence, experience, improves resume and overall, increases poten
 Name: TIQA = trust in arabic
 Slogan: Building Confidence
 
+## getting started:
+  $ npm install
