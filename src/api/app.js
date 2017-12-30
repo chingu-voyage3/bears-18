@@ -16,6 +16,13 @@ route(app, authRoutes, apiRoutes);
 //TODO: how to make a request for token after expiration
 //TODO: check how to make only a particular domain to access the api url
 //TODO: insert the database
-//TODO: sanitize the incoming using dompurify
+//TODO: sanitize the incoming using dompurify and jsdom
+// const createDOMPurify = require('dompurify');
+// const { JSDOM } = require('jsdom');
+ 
+// const window = (new JSDOM('')).window;
+// const DOMPurify = createDOMPurify(window);
+ 
+// const clean = DOMPurify.sanitize(dirty);
 //TODO: process image on the server side
 //TODO: process of image uploading
