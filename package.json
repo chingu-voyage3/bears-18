@@ -23,6 +23,7 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "compression": "^1.7.1",
+    "dompurify": "^1.0.3",
     "es6-promisify": "^5.0.0",
     "express": "^4.16.2",
     "express-validator": "^4.3.0",
