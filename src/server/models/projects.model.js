@@ -2,9 +2,9 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const projectSchema = new Schema({
-    owner: {
+    client: {
         type: Schema.ObjectId,
-        ref: 'Owner'
+        ref: 'User'
     },
     projectName: {
         type: 'String',
@@ -21,7 +21,7 @@ const projectSchema = new Schema({
     },
     developer: {
         type: Schema.ObjectId,
-        ref: 'Dev'
+        ref: 'User'
     },
     dateAdded: {
         type: 'String',

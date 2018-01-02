@@ -1,23 +1,24 @@
 import User from '../models/users.model';
+const uuidv4 = require('uuid/v4');
 import sanitizeHtml from 'sanitize-html';
 import promisify from 'es6-promisify'
 
 /**
- * Get all devs
+ * Get all clients
  * @param req
  * @param res
  * @returns void
  */
-export function getDevs(req, res) {
-  User.find({role:'DEVELOPER'}).sort('-dateAdded').exec((err, devs) => {
+export function getClients(req, res) {
+  User.find({role:'CLIENT'}).sort('-dateAdded').exec((err, clients) => {
     if (err) {
       res.status(500).send(err);
     }
-    res.json({ devs });
+    res.json({ clients });
   });
 }
 /**
- * Register a dev
+ * Register a client
  * @param req
  * @param res
  * @returns void
@@ -35,18 +36,18 @@ next()
 }
 export  async function  register(req,res,next){
   
-  const developer = new User({ email: req.body.email })
+  const client = new User({ email: req.body.email })
  
   // this part is handled with the passeport framework
   const register = promisify(User.register,User)
-  await register(developer,req.body.password)
+  await register(client,req.body.password)
  // and we save the new user
 
-  developer.save((err, saved) => {
+  client.save((err, saved) => {
     if (err) {
       res.status(500).send(err);
     }
-   // res.json({ dev: saved });
+   // res.json({ client: saved });
    next()
   });
   
@@ -54,63 +55,63 @@ export  async function  register(req,res,next){
   }
 
 /**
- * Save a dev
+ * Save a client
  * @param req
  * @param res
  * @returns void
  */
-export function addDev(req, res) {
+export function addClient(req, res) {
   if (!req.body.name || !req.body.email || !req.body.desc) {
      res.status(403).end();}
-    const newDev = new User({name:req.body.name,email:req.body.email,desc:req.body.desc,image:req.body.image,fees:req.body.fees});
+    const newClient = new User({name:req.body.name,email:req.body.email,desc:req.body.desc,image:req.body.image,fees:req.body.fees});
     // Let's sanitize inputs
-  newDev.email = sanitizeHtml(newDev.email);
-  newDev.name = sanitizeHtml(newDev.name);
-  newDev.desc = sanitizeHtml(newDev.desc);
-  newDev.fees = sanitizeHtml(newDev.fees);
- // newDev.status = sanitizeHtml(newDev.status);
-  newDev.image = sanitizeHtml(newDev.image);
-  newDev.role = 'DEVELOPER'
- 
-  newDev.save((err, saved) => {
+  newClient.email = sanitizeHtml(newClient.email);
+  newClient.name = sanitizeHtml(newClient.name);
+  newClient.desc = sanitizeHtml(newClient.desc);
+  newClient.fees = sanitizeHtml(newClient.fees);
+ // newClient.status = sanitizeHtml(newClient.status);
+  newClient.image = sanitizeHtml(newClient.image);
+  newClient.role = 'CLIENT'
+  newClient.clientid = uuidv4();
+  newClient.save((err, saved) => {
     if (err) {
       res.status(500).send(err);
     }
-    res.json({ dev: saved });
+    res.json({ client: saved });
     
   });
-// res.json(newDev)
+// res.json(newClient)
 }
 
 
 /**
- * Get a single dev
+ * Get a single client
  * @param req
  * @param res
  * @returns void
  */
-export function getDev(req, res) {
-  User.findOne({ _id: req.params.devid }).exec((err, dev) => {
+export function getClient(req, res) {
+  User.findOne({ _id: req.params.clientid }).exec((err, client) => {
     if (err) {
       res.status(500).send(err);
     }
-    res.json({ dev });
+    res.json({ client });
   });
 }
 
 /**
- * Delete a dev
+ * Delete a client
  * @param req
  * @param res
  * @returns void
  */
-export function deleteDev(req, res) {
-  User.findOne({ _id: req.params.devid }).exec((err, dev) => {
+export function deleteClient(req, res) {
+  User.findOne({ _id: req.params.clientid }).exec((err, client) => {
     if (err) {
       res.status(500).send(err);
     }
 
-    dev.remove(() => {
+    client.remove(() => {
       res.status(200).end();
     });
   });

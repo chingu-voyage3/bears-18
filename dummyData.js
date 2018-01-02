@@ -1,8 +1,8 @@
-import Dev from './src/server/models/dev.model';
+import  User   from './src/server/models/users.model';
 import promisify from 'es6-promisify'
 
 export default async function () {
-  Dev.count().exec(async (err, count) => {
+  User.count().exec(async (err, count) => {
     if (count > 0) {
       return;
     }
@@ -25,25 +25,33 @@ export default async function () {
       occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
       `;
 
-    const dev1 = new Dev({ 
-                           name: 'Admin', email: 'admin@gmail.com', 
+    const admin1 = new User({ 
+                           name: 'Admin', email: 'admin@gmail.com',
+                           role:'ADMIN', 
                            image: 'https://static.pexels.com/photos/162140/duckling-birds-yellow-fluffy-162140.jpeg',
-                           devid: 'cikqgkv4q01ck7453ualdn3hd',
                            desc: desc1
                            });
    
                          
-    const dev2 = new Dev({ 
+    const dev1 = new User({ 
                            name: 'sghir',
+                           role: 'DEVELOPER',
                            email: 'sghir@imist.ma',
                            image: 'https://static.pexels.com/photos/162140/duckling-birds-yellow-fluffy-162140.jpeg',
                            devid: 'cikqgkv4q01ck7453ualdn3hf',
                            desc: desc2
                            });
-    const register = promisify(Dev.register,Dev)
-    await register(dev1,'dev1pass'); 
-    await register(dev2,'dev2pass');   
-    Dev.create([dev1, dev2], (error) => {
+                           const client1 = new User({ 
+                            name: 'bigClient',
+                            role: 'CLIENT',
+                            email: 'client@company.com',
+                           
+                            });                       
+    const register = promisify(User.register,User)
+    await register(admin1,'dev1pass'); 
+    await register(dev1,'dev1pass');
+    await register(client1,'client1pass');     
+    User.create([admin1, dev1], (error) => {
       if (!error) {
         console.log('ready to go....devs created');
       }

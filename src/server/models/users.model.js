@@ -4,14 +4,14 @@ import mongodbErrorHandler from 'mongoose-mongodb-errors'
 import passportLocalMongoose from 'passport-local-mongoose'
 const Schema = mongoose.Schema;
 /**
- * The developer schema only the email is required field
+ * The user schema only the email is required field
  * the other fields are :name,desc,image,adresse, country are strings.
  * projects is an array of object ids referencing projects.
  * skills is an array of strings of the developer skills.
  * the password is handled by the passeport framework.
  */
 
-const devSchema = new Schema({
+const userSchema = new Schema({
   name: { 
     type: 'String',
     trim:true,
@@ -40,18 +40,20 @@ const devSchema = new Schema({
     type: 'Boolean' ,
     default:false
   },
-  devid: { 
-    type: 'String', 
-    required: true
-   },
+  
   dateAdded: {
     type: 'Date',
     default: Date.now,
     required: true
    },
-  projects:[{ 
+  projectsOwned:[{ 
     type: Schema.ObjectId,
      ref: 'Project' }],
+
+  projectsDeveloped:[{ 
+    type: Schema.ObjectId,
+    ref: 'Project' }], 
+        
   skills:[{ 
     type: 'String',
    }],   
@@ -60,8 +62,12 @@ const devSchema = new Schema({
   },   
   country:{
     type:'String'
-  }
-});
-devSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
-devSchema.plugin(mongodbErrorHandler);
-export default mongoose.model('Dev', devSchema);
+  },
+  role:{
+    type: 'String',
+    enum: ['ADMIN', 'DEVELOPER','CLIENT']
+      }
+},{ collection: 'users' });
+userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
+userSchema.plugin(mongodbErrorHandler);
+export default mongoose.model('User', userSchema);
