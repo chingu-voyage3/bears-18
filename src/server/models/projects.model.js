@@ -3,9 +3,8 @@ const { Schema } = mongoose;
 
 const projectSchema = new Schema({
     owner: {
-        type: 'String',
-        trim: true,
-        required: true
+        type: Schema.ObjectId,
+        ref: 'Owner'
     },
     projectName: {
         type: 'String',
@@ -21,17 +20,17 @@ const projectSchema = new Schema({
         type: ['String']
     },
     developer: {
-        type: 'String',
-        trim: true
+        type: Schema.ObjectId,
+        ref: 'Dev'
     },
     dateAdded: {
         type: 'String',
         default: Date.now,
         required: true
     },
-    projectActive: {
-        type: 'boolean',
-        default: false
+    projectStatus: {
+        type: 'String',
+        enum: ['OPEN', 'IN PROGRESS', 'IDLE', 'DONE', 'CANCELED']
     }
 });
 
