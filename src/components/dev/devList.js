@@ -3,7 +3,7 @@
 import React from 'react';
 import Dev from './dev'
 import { connect } from 'react-redux'
-import { loadDevs } from '../../states/actions';
+//import { loadDevs } from '../../states/actions';
 /**
  * 
  * 

@@ -10,7 +10,9 @@ router.route('/devs').get(DevController.getDevs);
 router.route('/devs/:devid').get(/*authController.JWTlogin, */DevController.getDev);
 
 // Add a new Dev
-//router.route('/devs').post(DevController.addDev);
+router.route('/devs').post(DevController.addDev);
+//update a dev
+router.route('/devs/:devid').post(DevController.updateDev);
 // register a new dev
 router.route('/devs/logout').post(authController.logout);
 router.route('/devs/register').post(DevController.validateRegister,DevController.register,authController.login);

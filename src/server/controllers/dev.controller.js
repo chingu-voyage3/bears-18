@@ -92,9 +92,9 @@ export function addDev(req, res) {
 export function getDev(req, res) {
   User.findOne({ _id: req.params.devid }).exec((err, dev) => {
     if (err) {
-      res.status(500).send(err);
+      res.status(500).send(err)
     }
-    res.json({ dev });
+    res.json({ dev })
   });
 }
 
@@ -107,11 +107,45 @@ export function getDev(req, res) {
 export function deleteDev(req, res) {
   User.findOne({ _id: req.params.devid }).exec((err, dev) => {
     if (err) {
-      res.status(500).send(err);
+      res.status(500).send(err)
     }
 
     dev.remove(() => {
-      res.status(200).end();
+      res.status(200).end()
     });
   });
+}
+/**
+ * Update a dev
+ * @param req
+ * @param res
+ * @returns void
+ */
+export function updateDev(req, res) {
+  /*if (!req.body.dev) {
+    res.status(403).end();}
+  User.findOne({ _id: req.params.devid }).exec((err, olddev) => {
+    if (err) {
+      res.status(500).send(err)
+    }
+
+  let dev = req.body.dev
+    
+    // Let's sanitize inputs
+    Object.keys(dev).forEach(element => {
+      if(!dev[element]){
+        delete dev[element]
+      }
+      dev[element]= sanitizeHtml(dev[element])
+    })
+  const updatedDev = Object.assign({},olddev,dev)
+  updatedDev.save((err, saved) => {
+    if (err) {
+      res.status(500).send(err)
+    }
+    res.json({ dev: saved })
+    
+  });*/
+ res.json(req.body)
+//})
 }
